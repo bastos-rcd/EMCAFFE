@@ -1,0 +1,28 @@
+---
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<select
+	id="language"
+	class="block w-full rounded-lg border border-[#A47343] bg-[#FEFBED] p-1 text-xs font-bold text-[#5C3F32] md:p-2.5 md:text-sm"
+	onchange="targetLang(this.value)"
+>
+	<option value="fr" selected={lang == 'fr' ? true : false}>FR</option>
+	<option value="en" selected={lang == 'en' ? true : false}>EN</option>
+	<option value="es" selected={lang == 'es' ? true : false}>ES</option>
+</select>
+
+<script>
+	const langSelector = document.getElementById('language');
+	if (!langSelector) {
+		throw new Error('Language selector not found');
+	}
+
+	langSelector.onchange = function (e) {
+		const lang = (e.target as HTMLSelectElement).value;
+		const url = window.location.pathname.replace(/^\/[a-z]{2}/, `/${lang}`);
+		window.location.href = url;
+	};
+</script>

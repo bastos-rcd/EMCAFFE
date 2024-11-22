@@ -1,0 +1,91 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="w-full">
+	<div
+		class="flex w-full flex-col items-center justify-center gap-y-10 bg-[#385D51] py-8 md:flex-row md:items-start md:gap-y-0"
+	>
+		<div class="flex w-3/4 flex-col justify-center gap-y-4 md:w-1/4">
+			<h1
+				class="w-full text-center font-[Chalkduster] text-2xl font-bold text-white"
+			>
+				{t('footer.title1')}
+			</h1>
+			<p
+				class="w-full text-center font-[Chalkduster] font-normal text-white"
+			>
+				{t('footer.description1')}
+			</p>
+		</div>
+
+		<div class="my-4 hidden items-center md:flex">
+			<div class="mx-8 h-52 border-l border-dashed border-gray-400"></div>
+		</div>
+
+		<div class="flex w-3/4 flex-col justify-center gap-y-4 md:w-1/4">
+			<h1
+				class="w-full text-center font-[Chalkduster] text-2xl font-bold text-white"
+			>
+				{t('footer.title2')}
+			</h1>
+			<a
+				href=`/${lang}/shop`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.coffee.bio')}</a
+			>
+			<div>
+				<hr class="border-dashed border-gray-400" />
+			</div>
+			<a
+				href=`/${lang}/shop`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.coffee.specialty')}</a
+			>
+		</div>
+
+		<div class="my-4 hidden items-center md:flex">
+			<div class="mx-8 h-52 border-l border-dashed border-gray-400"></div>
+		</div>
+
+		<div class="flex w-3/4 flex-col justify-center gap-y-4 md:w-1/4">
+			<h1
+				class="w-full text-center font-[Chalkduster] text-2xl font-bold text-white"
+			>
+				{t('footer.title3')}
+			</h1>
+			<a
+				href=`/${lang}/#contact`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.contact')}</a
+			>
+			<div>
+				<hr class="border-dashed border-gray-400" />
+			</div>
+			<a
+				href=`/${lang}/legal`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.legal')}</a
+			>
+			<div>
+				<hr class="border-dashed border-gray-400" />
+			</div>
+			<a
+				href=`/${lang}/cookies`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.cookies')}</a
+			>
+			<div>
+				<hr class="border-dashed border-gray-400" />
+			</div>
+			<a
+				href=`/${lang}/confidentiality`
+				class="w-full text-left font-[Chalkduster] font-normal text-white transition-all duration-300 ease-in-out hover:scale-105 hover:text-[#FFD700]"
+				>{t('footer.confidentiality')}</a
+			>
+		</div>
+	</div>
+</footer>

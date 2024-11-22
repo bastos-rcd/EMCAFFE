@@ -1,0 +1,90 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import Layout from '@/layouts/Layout.astro';
+
+import { getLangFromUrl, getStaticPaths, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export { getStaticPaths };
+---
+
+<Layout title=`EMCAFFE - ${t('cookie.main.title')}`>
+	<Header />
+
+	<main
+		class="mb-8 mt-[255px] flex h-auto w-full flex-col gap-y-8 px-4 md:mt-[192px] md:px-40"
+	>
+		<h1 class="w-full text-center text-4xl font-bold text-[#385D51]">
+			{t('cookie.title')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('cookie.1.description')}
+			<br />
+			{t('cookie.1.description2')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('cookie.title2')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('cookie.2.description')}
+			<br />
+			{t('cookie.2.description2')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.2.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.2.description4')}
+			<br />
+			{t('cookie.2.description5')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('cookie.title3')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('cookie.3.description')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.3.description2')}
+			<br />
+			{t('cookie.3.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.3.description4')}
+			<br />
+			{t('cookie.3.description5')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.3.description6')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.3.description7')}
+			<br />
+			{t('cookie.3.description8')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('cookie.title4')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('cookie.4.description')}
+			<br />
+			{t('cookie.4.description2')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('cookie.title5')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('cookie.5.description')}
+			<br />
+			{t('cookie.5.description2')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.5.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('cookie.5.description4')}
+			<br />
+			{t('cookie.5.description5')}
+		</p>
+		<h1 class="w-full text-center text-2xl font-bold text-[#385D51]">
+			{t('cookie.title6')}
+		</h1>
+	</main>
+
+	<Footer />
+</Layout>

@@ -1,0 +1,128 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative h-auto w-full overflow-hidden">
+	<div class="relative flex h-auto w-full overflow-hidden">
+		<video
+			id="media-1"
+			autoplay
+			loop
+			muted
+			playsinline
+			class="slide-in h-auto w-full object-cover"
+			src="/hero/forest-hero.webm"></video>
+		<video
+			id="media-2"
+			autoplay
+			loop
+			muted
+			playsinline
+			class="slide-out absolute h-auto w-full object-cover"
+			src="/hero/rio-amazonas-hero.webm"></video>
+		<video
+			id="media-3"
+			autoplay
+			loop
+			muted
+			playsinline
+			class="slide-out absolute h-auto w-full object-cover"
+			src="/infos/coffee.webm"></video>
+		<img
+			id="media-4"
+			class="slide-out absolute h-auto w-full object-cover"
+			src="/hero/product-hero.png"
+		/>
+	</div>
+	<div class="z-1 absolute inset-0 flex flex-col justify-around text-white">
+		<h2
+			class="w-full text-center font-[Chalkduster] text-xl md:mt-32 md:text-6xl"
+		>
+			EMCAFFE
+		</h2>
+		<h1 class="w-full text-center font-[Chalkduster] text-2xl md:text-8xl">
+			NATURAL AMAZONAS TO WORLD
+		</h1>
+		<h2 class="w-full text-center font-[Chalkduster] text-base md:text-4xl">
+			{t('hero.coffee')}
+		</h2>
+	</div>
+</section>
+
+<style>
+	@keyframes slide-in {
+		from {
+			transform: translateX(100%);
+		}
+		to {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-out {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+
+	.slide-in {
+		animation: slide-in 1500ms ease forwards;
+	}
+
+	.slide-out {
+		animation: slide-out 1500ms ease forwards;
+	}
+</style>
+
+<script>
+	let activeMedia = 1;
+
+	function switchVideos() {
+		const media1 = document.getElementById('media-1')!;
+		const media2 = document.getElementById('media-2')!;
+		const media3 = document.getElementById('media-3')!;
+		const media4 = document.getElementById('media-4')!;
+
+		if (activeMedia === 1) {
+			media1.classList.remove('slide-in');
+			media1.classList.add('slide-out');
+
+			media2.classList.remove('slide-out');
+			media2.classList.add('slide-in');
+
+			activeMedia = 2;
+		} else if (activeMedia === 2) {
+			media2.classList.remove('slide-in');
+			media2.classList.add('slide-out');
+
+			media3.classList.remove('slide-out');
+			media3.classList.add('slide-in');
+
+			activeMedia = 3;
+		} else if (activeMedia === 3) {
+			media3.classList.remove('slide-in');
+			media3.classList.add('slide-out');
+
+			media4.classList.remove('slide-out');
+			media4.classList.add('slide-in');
+
+			activeMedia = 4;
+		} else if (activeMedia === 4) {
+			media4.classList.remove('slide-in');
+			media4.classList.add('slide-out');
+
+			media1.classList.remove('slide-out');
+			media1.classList.add('slide-in');
+
+			activeMedia = 1;
+		}
+	}
+
+	setInterval(switchVideos, 5000);
+</script>

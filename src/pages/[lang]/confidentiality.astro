@@ -1,0 +1,216 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import Layout from '@/layouts/Layout.astro';
+
+import { getLangFromUrl, getStaticPaths, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export { getStaticPaths };
+---
+
+<Layout title=`EMCAFFE - ${t('conf.main.title')}`>
+	<Header />
+
+	<main
+		class="mb-8 mt-[255px] flex h-auto w-full flex-col gap-y-8 px-4 md:mt-[192px] md:px-40"
+	>
+		<h1 class="w-full text-center text-4xl font-bold text-[#385D51]">
+			{t('conf.main.title')}
+		</h1>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.1.description')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.1.description2')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.1.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.1.description4')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.1.description5')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.1.description6')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title2')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.2.description')}
+			<br /><br />
+			{t('conf.2.description2')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description4')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description5')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description6')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description7')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description8')}
+			<br />
+			{t('conf.2.description9')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description10')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description11')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description12')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description13')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.2.description14')}
+			<br />
+			{t('conf.2.description15')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title3')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.3.description')}
+			<br /><br />
+			{t('conf.3.description2')}
+			<br />
+			{t('conf.3.description3')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title4')}
+		</h1>
+		<h2 class="mx-auto w-full text-xl font-bold text-[#385D51]">
+			{t('conf.4.description')}
+		</h2>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.4.description2')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description3')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description4')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description5')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description6')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description7')}
+		</p>
+		<h2 class="mx-auto w-full text-xl font-bold text-[#385D51]">
+			{t('conf.4.description8')}
+		</h2>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.4.description9')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description10')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description11')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description12')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description13')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description14')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description15')}
+			<br />
+			{t('conf.4.description16')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description17')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.4.description18')}
+			<br />
+			{t('conf.4.description19')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title5')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.5.description')}
+			<br /><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.5.description2')}
+			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;{t('conf.5.description3')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title6')}
+		</h1>
+		<h2 class="mx-auto w-full text-xl font-bold text-[#385D51]">
+			{t('conf.6.description')}
+		</h2>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.6.description2')}
+		</p>
+		<h2 class="mx-auto w-full text-xl font-bold text-[#385D51]">
+			{t('conf.6.description3')}
+		</h2>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.6.description4')}
+			<br /><br />
+			{t('conf.6.description5')}
+			<br />
+			{t('conf.6.description6')}
+			<br />
+			{t('conf.6.description7')}
+			<br />
+			{t('conf.6.description8')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title7')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.7.description')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title8')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.8.description')}
+			<br /><br />
+			{t('conf.8.description2')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title9')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.9.description')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title10')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.10.description')}
+			<br /><br />
+			{t('conf.10.description2')}
+			<br />
+			{t('conf.10.description3')}
+			<br />
+			{t('conf.10.description4')}
+			<br />
+			{t('conf.10.description5')}
+			<br />
+			{t('conf.10.description6')}
+			<br />
+			{t('conf.10.description7')}
+		</p>
+		<h1 class="mx-auto w-full text-2xl font-bold text-[#385D51]">
+			{t('conf.title11')}
+		</h1>
+		<p class="mx-auto w-full text-justify text-primary">
+			{t('conf.11.description')}
+			<br /><br />
+			{t('conf.11.description2')}
+			<br />
+			{t('conf.11.description3')}
+			<br />
+			{t('conf.11.description4')}
+			<br />
+			{t('conf.11.description5')}
+		</p>
+	</main>
+
+	<Footer />
+</Layout>

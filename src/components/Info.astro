@@ -1,0 +1,27 @@
+---
+interface Props {
+	video: string;
+	text: string;
+	subtext: string;
+}
+
+const { video, text, subtext } = Astro.props;
+---
+
+<section class="mx-6 mb-5 md:mb-0">
+	<picture>
+		<video class="h-auto w-full rounded-lg" autoplay loop muted playsinline>
+			<source src={video} type="video/webm" />
+		</video>
+	</picture>
+
+	<h2
+		class="mt-3 text-wrap pb-2 text-left text-lg font-bold text-[#5C3F32] md:text-2xl"
+	>
+		{text}
+	</h2>
+
+	<p class="text-justify text-sm text-[#A47343] md:text-base">
+		{subtext}
+	</p>
+</section>

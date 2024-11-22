@@ -1,0 +1,110 @@
+---
+import LanguagePicker from '@/components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isContactRedirect = Astro.url.hash === '#contact';
+const isShopPage = Astro.url.pathname === `/${lang}/shop`;
+const isHomePage = (isShopPage || isContactRedirect) === false;
+---
+
+<header id="header" class={isContactRedirect ? 'sticky' : 'transparent'}>
+	<a
+		href=`/${lang}/`
+		class="flex w-full flex-row items-center justify-center gap-x-2 border-b-2 border-[#A47343] py-2 md:w-auto md:justify-normal md:gap-x-4 md:border-b-0 md:py-0 lg:gap-x-14"
+	>
+		<picture>
+			<img
+				class="h-40 w-auto max-w-xs rounded-full border-4 border-[#013C26] md:max-w-md lg:max-w-lg"
+				src="/img/emca-logo.png"
+			/>
+		</picture>
+	</a>
+
+	<ul class="flex items-center justify-end gap-x-2 py-2 md:gap-x-6 md:py-0">
+		<li
+			class="md:text-md text-sm font-semibold hover:text-[#A47343] md:text-lg"
+		>
+			<a href=`/${lang}/`>{t('nav.home')}</a>
+		</li>
+		<li
+			class="md:text-md text-sm font-semibold hover:text-[#A47343] md:text-lg"
+		>
+			<a href=`/${lang}/shop`>{t('nav.products')}</a>
+		</li>
+		<li
+			class="md:text-md text-sm font-semibold hover:text-[#A47343] md:text-lg"
+		>
+			<a href=`/${lang}/#contact`>{t('nav.contact')}</a>
+		</li>
+		<li>
+			<LanguagePicker />
+		</li>
+	</ul>
+</header>
+
+<style>
+	.mix-header-styles {
+		@apply fixed left-0 top-0 z-50 flex w-full flex-col items-center justify-between gap-y-2 px-3 py-4 md:flex-row md:px-8 lg:px-20;
+		-webkit-transition: background-color 300ms linear;
+		-ms-transition: background-color 300ms linear;
+		transition: background-color 300ms linear;
+	}
+
+	.sticky {
+		@apply mix-header-styles bg-beige text-[#5C3F32];
+	}
+
+	.transparent {
+		@apply mix-header-styles bg-transparent text-white;
+		background: transparent;
+	}
+</style>
+
+<script>
+	// Stick header to top when scrolling down past it
+	var header = document.getElementById('header');
+
+	var currentState = false;
+	var currentThreshold = header?.offsetTop;
+	var isMobile = window.innerWidth < 640;
+
+	const currentPath = window.location.pathname;
+	const isEffectEnabled = currentPath.length <= 4 && !isMobile;
+
+	if (isEffectEnabled) {
+		window.onload = checkForAlter;
+		window.onscroll = checkForAlter;
+		window.onresize = function () {
+			currentThreshold = header?.offsetTop;
+			isMobile = window.innerWidth < 640;
+			checkForAlter();
+		};
+	} else {
+		alterHeader(true);
+	}
+
+	function checkForAlter() {
+		if (isMobile) return;
+
+		if (window.scrollY > (currentThreshold ?? 0)) {
+			alterHeader(true);
+		} else {
+			alterHeader(false);
+		}
+	}
+
+	function alterHeader(setState: boolean) {
+		if (currentState === setState) return;
+		currentState = setState;
+
+		if (setState) {
+			header?.classList.add('sticky');
+			header?.classList.remove('transparent');
+		} else {
+			header?.classList.add('transparent');
+			header?.classList.remove('sticky');
+		}
+	}
+</script>

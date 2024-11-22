@@ -1,0 +1,185 @@
+---
+interface Props {
+	img: string;
+	productName: string;
+	description: string;
+	ingredient: string;
+	preparation: string;
+	dimension: string;
+	tabTitles: { ingredient: string; preparation: string; description: string };
+}
+
+const {
+	img,
+	productName,
+	description,
+	ingredient,
+	preparation,
+	dimension,
+	tabTitles,
+} = Astro.props as Props;
+
+function formatTextWithLineBreaks(text: string): string[] {
+	return text.split('\n');
+}
+---
+
+<div class="m-5 flex flex-col md:m-10 md:flex-row">
+	<div class="flex flex-row justify-between md:w-1/2 md:justify-normal">
+		<div class="flex h-1/2 flex-col align-top">
+			<button
+				id="button1"
+				class="mb-1 w-fit rounded-lg border-2 border-[#5C3F32] p-2 hover:border-[#A47343]"
+			>
+				<img class="h-auto w-6 md:w-10" src={`${img}-1.png`} />
+			</button>
+			<button
+				id="button2"
+				class="mt-1 w-fit rounded-lg border-2 border-[#5C3F32] p-2 hover:border-[#A47343]"
+			>
+				<img class="h-auto w-6 md:w-10" src={`${img}-2.png`} />
+			</button>
+		</div>
+		<img
+			id="image"
+			class="h-auto w-2/3 md:ml-10"
+			src={`${img}-1.png`}
+			data-img={`${img}`}
+		/>
+	</div>
+
+	<div class="my-10 flex flex-col md:w-1/2">
+		<h2 class="text-2xl font-bold text-[#5C3F32] md:text-4xl">
+			{productName}
+		</h2>
+		<p class="mt-1 text-sm text-[#A47343]">
+			{dimension}
+		</p>
+
+		<div class="mt-5 w-full overflow-x-auto border-b-2 border-[#5C3F32]">
+			<ul class="flex cursor-pointer snap-x list-none">
+				<li class="mr-6">
+					<button
+						class="tablinks border-2 border-b-0 border-[#5C3F32] px-4 py-2 text-xl font-bold text-[#5C3F32] hover:bg-[#A47343]"
+						data-tab="ingredient"
+					>
+						{tabTitles.ingredient}
+					</button>
+				</li>
+				<li class="mr-6">
+					<button
+						class="tablinks border-b-0 border-[#5C3F32] px-4 py-2 text-xl font-bold text-[#5C3F32] hover:bg-[#A47343]"
+						data-tab="preparation"
+					>
+						{tabTitles.preparation}
+					</button>
+				</li>
+				<li class="mr-6">
+					<button
+						class="tablinks border-b-0 border-[#5C3F32] px-4 py-2 text-xl font-bold text-[#5C3F32] hover:bg-[#A47343]"
+						data-tab="description"
+					>
+						{tabTitles.description}
+					</button>
+				</li>
+			</ul>
+		</div>
+
+		<div
+			id="ingredient"
+			class="tabcontent mt-5 hidden text-base text-[#A47343]"
+		>
+			{
+				formatTextWithLineBreaks(ingredient).map((line) => (
+					<p class="mt-2 text-xl">{line}</p>
+				))
+			}
+		</div>
+
+		<div
+			id="preparation"
+			class="tabcontent mt-5 hidden text-base text-[#A47343]"
+		>
+			{
+				formatTextWithLineBreaks(preparation).map((line) => (
+					<p class="mt-2 text-xl">{line}</p>
+				))
+			}
+		</div>
+
+		<div
+			id="description"
+			class="tabcontent mt-5 hidden text-base text-[#A47343]"
+		>
+			{
+				formatTextWithLineBreaks(description).map((line) => (
+					<p class="mt-2 text-xl">{line}</p>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	const changeImage = (srcImg: string, num: string) => {
+		const image = document.getElementById('image')! as HTMLImageElement;
+		image.src = `${srcImg}-${num}.png`;
+	};
+
+	const openTab = (tabName: string) => {
+		const tabcontent = document.querySelectorAll('.tabcontent');
+		const tablinks = document.querySelectorAll('.tablinks');
+
+		tabcontent.forEach((content) => {
+			content.classList.add('hidden');
+		});
+
+		tablinks.forEach((link) => {
+			link.classList.remove('border-2');
+		});
+
+		const activeTab = document.getElementById(tabName);
+		if (activeTab) {
+			activeTab.classList.remove('hidden');
+		}
+
+		const activeLink = [...tablinks].find(
+			(link) => link.getAttribute('data-tab') === tabName,
+		);
+		if (activeLink) {
+			activeLink.classList.add('border-2');
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const img = document.getElementById('image')!.getAttribute('data-img')!;
+
+		document
+			.getElementById('button1')!
+			.addEventListener('click', () => changeImage(img, '1'));
+		document
+			.getElementById('button2')!
+			.addEventListener('click', () => changeImage(img, '2'));
+
+		document.querySelectorAll('.tablinks').forEach((button) => {
+			button.addEventListener('click', () => {
+				const tabName = button.getAttribute('data-tab');
+				if (tabName) {
+					openTab(tabName);
+				}
+			});
+		});
+
+		openTab('ingredient');
+	});
+</script>
+
+<style>
+	.tabcontent.hidden {
+		display: none;
+	}
+
+	.tabcontent {
+		display: block;
+	}
+</style>

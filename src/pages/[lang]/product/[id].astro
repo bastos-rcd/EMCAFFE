@@ -1,0 +1,54 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import ProductCard from '@/components/ProductCard.astro';
+
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+interface Params {
+	id: string;
+	lang: string;
+}
+
+export function getStaticPaths() {
+	const productList = ['200-bio', '300-bio', '200-spe', '300-spe'];
+	const languages = ['en', 'fr', 'es'];
+	return productList.flatMap((id) =>
+		languages.map((lang) => ({
+			params: { id, lang },
+		})),
+	);
+}
+
+const { id } = Astro.params as Params;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang as 'en' | 'fr' | 'es');
+
+const tabTitles = {
+	ingredient: t('tab.ingredient'),
+	preparation: t('tab.preparation'),
+	description: t('tab.description'),
+};
+
+const img = `/img/products/${id}`;
+const translatedTitle = t(`${id}.titlep`);
+---
+
+<Layout title={`EMCAFFE - ${translatedTitle}`}>
+	<Header />
+
+	<main class="mt-[255px] flex h-auto w-full flex-col md:mt-[192px]">
+		<ProductCard
+			img={img}
+			productName={t(`${id}.titlep`)}
+			description={t(`${id}.description`)}
+			ingredient={t(`${id}.ingredient`)}
+			preparation={t(`${id}.preparation`)}
+			dimension={t(`${id}.dimension`)}
+			tabTitles={tabTitles}
+		/>
+	</main>
+
+	<Footer />
+</Layout>

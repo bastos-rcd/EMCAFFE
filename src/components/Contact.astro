@@ -1,0 +1,55 @@
+---
+import ContactCard from './ContactCard.astro';
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="flex h-auto w-full flex-col items-center px-8" id="contact">
+	<div class="mb-4 w-[80%] md:w-[60%]">
+		<hr class="border-dashed border-[#5C3F32]" />
+	</div>
+
+	<h1
+		class="mb-4 text-center font-[Chalkduster] text-3xl font-bold text-[#5C3F32] md:text-5xl"
+	>
+		{t('contact.title')}
+	</h1>
+
+	<div
+		class="flex w-full flex-col items-start justify-center gap-y-4 md:flex-row md:gap-y-0"
+	>
+		<ContactCard
+			title=`${t('contact.facebook')}`
+			text="EMCA"
+			img="https://img.icons8.com/?size=100&id=118468&format=png&color=5C3F32"
+			link="https://www.facebook.com/profile.php?id=61567534892524"
+		/>
+		<ContactCard
+			title=`${t('contact.instagram')}`
+			text="@emcaffeperu"
+			img="https://img.icons8.com/?size=100&id=32292&format=png&color=5C3F32"
+			link="https://www.instagram.com/emcaffeperu/"
+		/>
+		<ContactCard
+			title=`${t('contact.mail')}`
+			text="sales@emcaffe.com"
+			img="https://img.icons8.com/?size=100&id=okvpqeYbG0xb&format=png&color=5C3F32"
+			link="mailto:sales@emcaffe.com"
+		/>
+		<ContactCard
+			title=`${t('contact.tel')}`
+			text="+33 6 99 42 56 34"
+			img="https://img.icons8.com/?size=100&id=9659&format=png&color=5C3F32"
+			link="tel:+33699425634"
+		/>
+		<ContactCard
+			title=`${t('contact.linkedin')}`
+			text="EMCA"
+			img="https://img.icons8.com/?size=100&id=447&format=png&color=5C3F32"
+			link=" https://www.linkedin.com/company/emca-natural-amazonas-to-world/about/?viewAsMember=true"
+		/>
+	</div>
+</div>

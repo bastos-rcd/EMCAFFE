@@ -1,0 +1,55 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import ShopArticle from '@/components/ShopArticle.astro';
+import Layout from '@/layouts/Layout.astro';
+
+import { getLangFromUrl, getStaticPaths, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export { getStaticPaths };
+---
+
+<Layout title=`EMCAFFE - ${t('nav.products')}`>
+	<Header />
+
+	<main
+		class="mb-8 mt-[255px] flex h-auto w-full flex-col gap-y-8 md:mt-[192px]"
+	>
+		<div
+			class="flex w-full flex-col justify-around gap-y-8 md:flex-row md:gap-y-0"
+		>
+			<ShopArticle
+				title=`${t('200-bio.title')}`
+				img="/img/products/200-bio"
+				details=`/${lang}/product/200-bio`
+			/>
+
+			<ShopArticle
+				title=`${t('300-bio.title')}`
+				img="/img/products/300-bio"
+				details=`/${lang}/product/300-bio`
+			/>
+		</div>
+
+		<div
+			class="flex w-full flex-col justify-around gap-y-8 md:flex-row md:gap-y-0"
+		>
+			<ShopArticle
+				title=`${t('300-spe.title')}`
+				img="/img/products/300-spe"
+				details=`/${lang}/product/300-spe`
+			/>
+
+			<ShopArticle
+				title=`${t('200-spe.title')}`
+				img="/img/products/200-spe"
+				details=`/${lang}/product/200-spe`
+			/>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

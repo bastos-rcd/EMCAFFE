@@ -1,0 +1,36 @@
+---
+import { useTranslations, getLangFromUrl } from '@/i18n/utils';
+
+interface Props {
+	title: string;
+	img: string;
+	details: string;
+}
+
+const { title, img, details } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col gap-y-8 md:w-2/5">
+	<div class="flex w-full items-center justify-center">
+		<a href={details} class="w-1/2">
+			<img
+				class="h-auto w-full rounded-lg border-2 border-[#5C3F32]"
+				src={`${img}-1.png`}
+			/>
+		</a>
+	</div>
+	<p
+		class="text-center font-sans text-xl font-semibold text-[#5C3F32] md:text-2xl"
+	>
+		{title}
+	</p>
+	<a
+		href={details}
+		class="self-center rounded-lg bg-[#5C3F32] px-4 py-2 text-center text-sm text-white hover:bg-[#A47343] md:text-base"
+	>
+		{t('shop.details')}
+	</a>
+</div>

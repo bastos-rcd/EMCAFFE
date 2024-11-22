@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import Contact from '@/components/Contact.astro';
+import InfoCoffee from '@/components/InfoCoffee.astro';
+import EmcaInfo from '@/components/EmcaInfo.astro';
+import HomeProducts from '@/components/HomeProducts.astro';
+
+import { getStaticPaths, getLangFromUrl, useTranslations } from '@/i18n/utils';
+export { getStaticPaths };
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="EMCAFFE">
+	<Header />
+
+	<main
+		class="mb-8 mt-[255px] flex w-full flex-col items-center gap-y-8 md:mt-0 md:gap-y-20"
+	>
+		<Hero />
+
+		<InfoCoffee />
+
+		<EmcaInfo />
+
+		<HomeProducts />
+
+		<Contact />
+	</main>
+
+	<Footer />
+</Layout>

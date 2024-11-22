@@ -1,0 +1,101 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const accordionElements = [
+	{
+		title: t('home-info.titre1'),
+		description: t('home-info.description1'),
+	},
+	{
+		title: t('home-info.titre2'),
+		description: t('home-info.description2'),
+	},
+	{
+		title: t('home-info.titre3'),
+		description: t('home-info.description3'),
+		extraHtml: `<video autoplay loop muted class="mt-6 h-auto w-[100%]">
+            <source src="/infos/rainbow.webm" type="video/webm" />`,
+	},
+	{
+		title: t('home-info.titre4'),
+		description: t('home-info.description4'),
+	},
+];
+---
+
+<div class="flex w-11/12 flex-col justify-center">
+	<div id="accordion" class="w-full">
+		{
+			accordionElements.map((element, index) => {
+				const isFirst = index === 0;
+				const isLast = index === accordionElements.length - 1;
+
+				return (
+					<>
+						<h2 id={`accordion-heading-${index}`}>
+							<button
+								class={`flex w-full items-center justify-center gap-3 ${isFirst ? 'rounded-t-lg' : ''} border-2 ${isLast ? 'border-b' : 'border-b-0'} border-[#5C3F32] p-5 font-[Chalkduster] text-lg font-bold text-primary hover:bg-gray-50 md:text-2xl`}
+								aria-expanded="false"
+								aria-controls={`accordion-body-${index}`}
+							>
+								{element.title}
+							</button>
+						</h2>
+						<div
+							id={`accordion-body-${index}`}
+							class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+							aria-labelledby={`accordion-heading-${index}`}
+						>
+							<div
+								class={`border border-x-2 ${isLast ? 'border-b' : 'border-b-0'} border-[#315a4d] bg-white p-5`}
+							>
+								<p class="w-full text-justify text-base text-primary md:text-xl">
+									{element.description}
+								</p>
+
+								{element.extraHtml && (
+									<div set:html={element.extraHtml} />
+								)}
+							</div>
+						</div>
+					</>
+				);
+			})
+		}
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const accordionButtons = document.querySelectorAll('[aria-controls]');
+
+		accordionButtons.forEach((button) => {
+			button.addEventListener('click', function () {
+				const expanded =
+					button.getAttribute('aria-expanded') === 'true';
+				button.setAttribute(
+					'aria-expanded',
+					expanded ? 'false' : 'true',
+				);
+
+				const bodyId = button.getAttribute('aria-controls');
+				if (bodyId) {
+					const body = document.getElementById(bodyId);
+					if (body) {
+						if (
+							body.style.maxHeight === '0px' ||
+							body.style.maxHeight === ''
+						) {
+							body.style.maxHeight = body.scrollHeight + 'px';
+						} else {
+							body.style.maxHeight = '0';
+						}
+					}
+				}
+			});
+		});
+	});
+</script>

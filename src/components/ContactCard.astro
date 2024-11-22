@@ -1,0 +1,28 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+	title: string;
+	text: string;
+	img: string;
+	link: string;
+}
+
+const { title, text, img, link } = Astro.props as Props;
+---
+
+<div class="flex w-full flex-col items-center justify-center gap-y-4 md:w-1/5">
+	<img src={img} />
+	<h1 class="font-[Chalkduster] text-lg text-[#5C3F32] md:text-2xl">
+		{title}
+	</h1>
+	<a
+		href={link}
+		class="w-3/4 rounded-lg border border-[#5C3F32] bg-transparent p-2 text-center text-sm text-[#A47343] hover:bg-gray-100 md:w-3/4 md:text-base"
+	>
+		{text}
+	</a>
+</div>

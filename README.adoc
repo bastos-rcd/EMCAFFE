@@ -1,0 +1,116 @@
+= BUT-Info/S5.A.01 : Développement avancé
+Jean-Michel Bruel
+v23.1, {localdate}
+:mailto: jbruel@gmail.com
+:status: bottom
+:inclusion:
+:experimental:
+:toc: toc2
+:toc-title: Table des matières
+:icons: font
+:window: _blank
+:asciidoctorlink: link:http://asciidoctor.org/[Asciidoctor]indexterm:[Asciidoctor]
+
+:asciidoc: http://www.methods.co.nz/asciidoc[AsciiDoc]
+:icongit: icon:git[]
+:git: http://git-scm.com/[{icongit}]
+:plantuml: https://plantuml.com/fr/[plantUML]
+:vscode: https://code.visualstudio.com/[VS Code]
+
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+:icongit: Git
+endif::[]
+
+:baseURL: https://github.com/bastos-rcd/EMCAFFE
+
+image:https://img.shields.io/badge/Website%20URL-emcaffe--dev.pages.dev-blue[Website URL]
+image:{baseURL}/actions/workflows/prettier.yaml/badge.svg[Code Quality] 
+image:https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg[License: MPL-2.0, link="https://opensource.org/licenses/MPL-2.0"]
+
+== 📋 | Contexte général
+
+WARNING: Ce dépôt présente un projet à développer dans le cadre de la SAÉ 5.A.01 du BUT3 Informatique de l'IUT de Blagnac.
+
+EMCA société en développement TPE importateur/ exportateur du café de la région sud Amérique recherche à développer son site web EMCAFFE.
+
+Le site est accessible depuis l’adresse suivante : https://emcaffe-dev.pages.dev[EMCAFFE]
+
+
+== 👥 | Équipe
+
+Projet est réalisé par::
+
+- https://github.com/AidanBalap[Aidan Balasch Pérez] : Product Owner
+- https://github.com/DamienZoldyck[Damien Laboute] : Développeur
+- https://github.com/HugolaLicorne[Hugo Berdinel] : Développeur
+- https://github.com/bastos-rcd[Bastien Record] : Scrum Master
+- https://github.com/wailgana[Wa-îl Gana] : Développeur
+
+Tuteur/tutrice enseignant(e) de l'équipe::
+
+- mailto:esther.pendaries@univ-tlse2.fr[EP]
+- mailto:jean-michel.bruel@univ-tlse2.fr[JMB]
+
+Client::
+
+- mailto:isabeldevillers@emcaffe.com[Isabel Devillers]
+
+== 🛠️ | Stack
+
+image:https://skillicons.dev/icons?i=html,css,ts,astro,tailwind[Used technologies]
+
+== 🗃️ | Dépôt
+
+- Version courante : `3.0`
+
+
+- `.gitignore` => un fichier minimaliste des éléments à ne pas pousser en général sur vos dépôts (utiliser la commande `git add -f` pour forcer l'ajout d'un fichier Jar qui ne bougera plus, pour archive par exemple)
+- `.vscode`=> dossier contenant des fichiers de configurations pour l'IDE VisualStudio Code
+- `public`=> dossier contenant les images utilisées dans le site web
+- `src`=> dossier contenant les codes sources du site web
+- `astro.config.mjs` => fichier de configuration du projet
+- `package.json` => fichier contenant les dépendances du site web
+
+
+## 🧞 | Usage
+
+
+[cols="1,2"]
+|===
+|Commande
+|Description
+
+|`npm install`
+|Installe les dépendances
+
+|`npm run dev`
+|Démarre le serveur de développement local à `localhost:4321`
+
+|`npm run build` 
+|'Build' votre site de production dans le dossier `./dist/` 
+
+|`npm run preview`
+|Prévisualise votre build localement, avant de le déployer.
+
+|`npm run astro ...`
+|Exécuter des commandes CLI comme `astro add`, `astro check`
+
+|`npm run astro -- --help`
+|Obtenir de l'aide sur l'utilisation du CLI Astro
+
+|`npm run prettier:check`
+|Vérifier le formattage du code avec Prettier
+
+|`npm run prettier:format`
+|Formatter les fichiers dans le dossier `./src/`
+|===
+
+== 📄 | Documentation
+
+Pour consulter le document technique qui détaille l'installation, les étapes de démarrage pour le développement du projet ainsi que la structure du projet, vous pouvez le lire https://github.com/bastos-rcd/EMCAFFE/blob/read-me/docs/doc-tech.md[ici].

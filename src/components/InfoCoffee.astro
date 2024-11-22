@@ -1,0 +1,25 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Info from './Info.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="flex w-full flex-col md:flex-row">
+	<Info
+		video="/infos/coffee.webm"
+		text=`${t('coffee.1.title')}`
+		subtext=`${t('coffee.1.description')}`
+	/>
+	<Info
+		video="/infos/coffee-roasting.webm"
+		text=`${t('coffee.2.title')}`
+		subtext=`${t('coffee.2.description')}`
+	/>
+	<Info
+		video="/infos/coffee-torefaction.webm"
+		text=`${t('coffee.3.title')}`
+		subtext=`${t('coffee.3.description')}`
+	/>
+</section>

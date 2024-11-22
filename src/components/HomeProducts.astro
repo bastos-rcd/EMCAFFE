@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const images = ['300-bio', '200-bio', '300-spe', '200-spe'];
+const notAvailableProducts = ['200-bio', '200-spe', '300-spe'];
+---
+
+<div class="flex w-full justify-center">
+	<div class="relative w-full p-6">
+		<h2
+			class="mb-8 text-pretty text-center text-3xl font-bold uppercase text-[#753E1C]"
+		>
+			{t('home-carousel.title')}
+		</h2>
+
+		<div class="hidden justify-center space-x-4 md:flex">
+			{
+				images.map((image) => (
+					<a
+						class="relative w-1/3 transform rounded-lg border border-[#315a4d] p-3 shadow-lg transition-transform hover:scale-105"
+						href={`/${lang}/product/${image}`}
+					>
+						{notAvailableProducts.includes(image) && (
+							<p class="absolute left-1/2 top-1/3 -translate-x-1/2 -rotate-12 text-center font-[Chalkduster] text-5xl font-black uppercase text-red-500">
+								{t('home-carousel.soon')}
+							</p>
+						)}
+
+						<img src={`/img/products/${image}-1.png`} />
+						<h1 class="p-2 text-center font-bold">
+							{t(`${image}.titlep`)}
+						</h1>
+					</a>
+				))
+			}
+		</div>
+
+		<div
+			class="scrollbar-hide flex space-x-4 overflow-x-scroll py-4 md:hidden"
+		>
+			{
+				images.map((image) => (
+					<a
+						class="relative w-full flex-shrink-0 rounded-lg border border-[#315a4d] p-2 shadow-lg"
+						href={`/${lang}/product/${image}`}
+					>
+						{notAvailableProducts.includes(image) && (
+							<p class="absolute left-1/2 top-1/3 -translate-x-1/2 -rotate-12 text-center font-[Chalkduster] text-4xl font-bold uppercase text-red-500">
+								{t('home-carousel.soon')}
+							</p>
+						)}
+
+						<img src={`/img/products/${image}-1.png`} />
+						<h1 class="mt-2 text-center text-xs font-bold">
+							{t(`${image}.titlep`)}
+						</h1>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</div>
